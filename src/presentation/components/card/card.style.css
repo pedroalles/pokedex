@@ -1,0 +1,92 @@
+:root {
+  --bug: #bddd6e;
+  --dark: #5f4632;
+  --dragon: #8a55fd;
+  --electric: #fffa24;
+  --fairy: #ff9fc2;
+  --fighting: #e81318;
+  --fire: #f67f0b;
+  --flying: #5eb9b2;
+  --ghost: #8e55a4;
+  --grass: #3e9709;
+  --ground: #e1d158;
+  --ice: #1995a1;
+  --normal: #ccc9aa;
+  --poison: #a719d7;
+  --psychic: #ec0e63;
+  --rock: #776a3e;
+  --steel: #7b8e8a;
+  --water: #0a7abc;
+}
+
+.water {
+  background-color: var(--water);
+}
+
+.fire {
+  background-color: var(--fire);
+}
+
+.grass {
+  background-color: var(--grass);
+}
+
+.electric {
+  background-color: var(--electric);
+}
+
+.poison {
+  background-color: var(--poison);
+}
+
+.normal {
+  background-color: var(--normal);
+}
+
+.bug {
+  background-color: var(--bug);
+}
+
+.ground {
+  background-color: var(--ground);
+}
+
+.fairy {
+  background-color: var(--fairy);
+}
+
+.fighting {
+  background-color: var(--fighting);
+}
+
+.psychic {
+  background-color: var(--psychic);
+}
+
+.rock {
+  background-color: var(--rock);
+}
+
+.ghost {
+  background-color: var(--ghost);
+}
+
+.ice {
+  background-color: var(--ice);
+}
+
+.dragon {
+  background-color: var(--dragon);
+}
+
+.dark {
+  background-color: var(--dark);
+}
+
+.steel {
+  background-color: var(--steel);
+}
+
+.flying {
+  background-color: var(--flying);
+}
