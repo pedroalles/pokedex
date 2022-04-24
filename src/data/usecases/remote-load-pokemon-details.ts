@@ -2,7 +2,7 @@ import {
   HttpClient,
   HttpStatusCode
 } from "../../infra/http-client/http-client";
-import { IPokemonDetails } from "../../App";
+import { IPokemonDetails } from "../../domain/models/pokemon";
 import { LoadPokemonDetails } from "../../domain/usecases/load-pokemon-details";
 
 interface Details {

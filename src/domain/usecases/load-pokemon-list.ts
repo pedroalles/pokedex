@@ -1,5 +1,5 @@
-import { IPokemon } from "../../App";
+import { IPokemon } from "../models/pokemon";
 
 export interface LoadPokemonList {
-  loadAll(url?: string): Promise<IPokemon[]>;
+  load(url?: string): Promise<IPokemon[]>;
 }
