@@ -10,7 +10,7 @@ import { RemoteLoadPokemonDetails } from "./data/usecases/remote-load-pokemon-de
 const rootElement = document.getElementById("root");
 const root = ReactDOMClient.createRoot(rootElement);
 
-const url = "https://pokeapi.co/api/v2/pokemon?limit=15&offset=0";
+const url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
 
 const loadPokemonList = new RemoteLoadPokemonList(url, new AxiosHttpClient());
 const loadPokemonDetails = new RemoteLoadPokemonDetails(new AxiosHttpClient());
