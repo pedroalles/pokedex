@@ -1,12 +1,12 @@
-import "./card.style.css";
-import styled from "styled-components";
+import './card.style.css'
+import styled from 'styled-components'
 
-export const CardContainer = styled.div<{ types: string[] | string }>`
+export const CardContainer = styled.div<{ types: string[] }>`
   background: ${(props) => {
     if (props.types.length > 1) {
-      return `linear-gradient(135deg, var(--${props.types[0]}) 50%, var(--${props.types[1]}) 50%)`;
+      return `linear-gradient(135deg, var(--${props.types[0]}) 50%, var(--${props.types[1]}) 50%)`
     } else {
-      return `var(--${props.types[0]});`;
+      return `var(--${props.types[0]});`
     }
   }};
   position: relative;
@@ -46,4 +46,4 @@ export const CardContainer = styled.div<{ types: string[] | string }>`
     height: 100%;
     font-size: 20px;
   }
-`;
+`
