@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LoadPokemonDetails } from "../../../domain/usecases/load-pokemon-details";
 import "./card.style.css";
 import { IPokemon, IPokemonDetails } from "../../../domain/models/pokemon";
+import { CardContainer } from "./card.style";
 
 type Props = {
   pokemon: IPokemon;
@@ -22,13 +23,15 @@ const Card: React.FC<Props> = ({
   }, [loadPokemonDetails, pokemon.url]);
   return (
     pokeDetails && (
-      <div
+      <CardContainer
         // key={pokemon.name}
         className={`${pokeDetails.types[0]}${
           pokeDetails.types[1] ? "-" + pokeDetails.types[1] : ""
         } card`}
         ref={lastElement}
+        types={pokeDetails.types}
       >
+        {/* <div> */}
         <p className="tag">{index.toString().padStart(3, "0")}</p>
         <img
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${index
@@ -45,7 +48,8 @@ const Card: React.FC<Props> = ({
             ))}
           </div>
         )} */}
-      </div>
+        {/* </div> */}
+      </CardContainer>
     )
   );
 };
