@@ -6,9 +6,16 @@ import { IPokemon, IPokemonDetails } from "../../../domain/models/pokemon";
 type Props = {
   pokemon: IPokemon;
   loadPokemonDetails: LoadPokemonDetails;
+  lastElement?: any;
+  index: number;
 };
 
-const Card: React.FC<Props> = ({ loadPokemonDetails, pokemon }: Props) => {
+const Card: React.FC<Props> = ({
+  loadPokemonDetails,
+  pokemon,
+  lastElement,
+  index
+}: Props) => {
   const [pokeDetails, setPokeDetails] = useState<IPokemonDetails>(null);
   useEffect(() => {
     loadPokemonDetails.load(pokemon.url).then(setPokeDetails);
@@ -16,13 +23,14 @@ const Card: React.FC<Props> = ({ loadPokemonDetails, pokemon }: Props) => {
   return (
     pokeDetails && (
       <div
-        key={pokemon.name}
+        // key={pokemon.name}
         className={`${pokeDetails.types[0]}${
           pokeDetails.types[1] ? "-" + pokeDetails.types[1] : ""
         } card`}
+        ref={lastElement}
       >
         <img
-          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id
+          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${index
             .toString()
             .padStart(3, "0")}.png`}
           alt=""

@@ -18,7 +18,6 @@ export class RemoteLoadPokemonDetails implements LoadPokemonDetails {
       method: "get"
     });
     const remotePokeDetails: Details = httpResponse.body || [];
-    console.log(remotePokeDetails);
 
     switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
