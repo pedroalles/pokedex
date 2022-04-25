@@ -7,7 +7,7 @@ export const usePokemons = (
 ): [pokemons: IPokemon[], lastCard: any] => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([])
 
-  const limit = 18
+  const limit = 21
   const [loading, setLoading] = useState(false)
   const [currUrl, setCurrUrl] = useState(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
