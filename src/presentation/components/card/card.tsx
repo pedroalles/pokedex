@@ -29,13 +29,14 @@ const Card: React.FC<Props> = ({
         } card`}
         ref={lastElement}
       >
+        <p className="tag">{index.toString().padStart(3, "0")}</p>
         <img
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${index
             .toString()
             .padStart(3, "0")}.png`}
           alt=""
         />
-        <h3>{pokemon.name}</h3>
+        <p className="name">{pokemon.name}</p>
         {/* {pokeDetails && (
           <div>
             <h5>Types</h5>
