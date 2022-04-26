@@ -49,7 +49,7 @@ export const ModalContainer = styled.div<{ types: string[] }>`
     height: 80vh;
     width: 70vw;
     && img {
-      height: 75%;
+      height: 65%;
     }
   }
 
