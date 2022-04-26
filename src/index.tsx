@@ -1,5 +1,6 @@
 import * as ReactDOMClient from 'react-dom/client'
 import App from './App'
+import './index.css'
 
 import { AxiosHttpClient } from './infra/http-client/http-client'
 import { RemoteLoadPokemonList } from './data/usecases/remote-load-pokemon-list'

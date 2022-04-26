@@ -1,4 +1,4 @@
-import './index.css'
+import './App.css'
 import { LoadPokemonList } from './domain/usecases/load-pokemon-list'
 import { LoadPokemonDetails } from './domain/usecases/load-pokemon-details'
 import Card from './presentation/components/card/card'

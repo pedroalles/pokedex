@@ -1,49 +1,44 @@
-import './card.style.css'
 import styled from 'styled-components'
 
 export const CardContainer = styled.div<{ types: string[] }>`
+  align-items: center;
   background: ${(props) => {
-    if (props.types.length > 1) {
-      return `linear-gradient(135deg, var(--${props.types[0]}) 50%, var(--${props.types[1]}) 50%)`
-    } else {
-      return `var(--${props.types[0]});`
-    }
+    return props.types.length > 1
+      ? `linear-gradient(135deg, var(--${props.types[0]}) 50%, var(--${props.types[1]}) 50%)`
+      : `var(--${props.types[0]});`
   }};
-  position: relative;
+  border: 1px solid #16161680;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px 0px #00000040;
   display: flex;
   flex-direction: column;
-  margin: 4px;
-
-  border-radius: 8px;
-  border: 1px solid #16161680;
-  align-items: center;
+  height: 200px;
   overflow: hidden;
-  box-shadow: 4px 4px 8px 0px #00000040;
+  position: relative;
 
   img {
-    height: 80%;
-    margin: auto auto;
+    height: 85%;
   }
 
-  .tag {
-    background-color: #16161680;
-    position: absolute;
-    padding: 4px 4px;
-    border-bottom-right-radius: 8px;
+  .index {
     align-self: flex-start;
-    color: white;
-    font-size: 14px;
+    background-color: var(--p-background);
+    border-bottom-right-radius: 8px;
+    color: var(--p-color);
+    font-size: 16px;
+    padding: 4px 4px;
+    position: absolute;
   }
 
   .name {
-    text-transform: capitalize;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #16161680;
-    color: white;
-    width: 100%;
-    height: 100%;
+    background-color: var(--p-background);
+    color: var(--p-color);
+    display: flex;
     font-size: 20px;
+    height: 15%;
+    justify-content: center;
+    text-transform: capitalize;
+    width: 100%;
   }
 `
