@@ -11,11 +11,7 @@ const Modal: React.FC<Props> = ({ pokemon, isOpen, onClose }: Props) => {
   return (
     <ModalBackground onClick={onClose}>
       <ModalContainer types={pokemon.details.types}>
-        {/* <button className="close" onClick={onClose}>
-          Close
-        </button> */}
         <h1 className="name">{pokemon.name}</h1>
-
         <img
           src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.details.id
             .toString()

@@ -23,24 +23,27 @@
 }
 
 .App {
-  display: grid;
   font-family: 'Roboto', sans-serif;
+}
+
+.board {
+  display: grid;
   justify-content: center;
   grid-auto-rows: 210px;
   grid-gap: 4px;
   grid-template-columns: 1fr 1fr 1fr;
-  /* padding: 4px; */
+  padding: 4px;
   text-align: center;
 }
 
 @media screen and (max-width: 768px) {
-  .App {
+  .board {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .App {
+  .board {
     grid-template-columns: 1fr;
   }
 }

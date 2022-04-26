@@ -17,12 +17,12 @@ export const ModalContainer = styled.div<{ types: string[] }>`
       ? `linear-gradient(150deg, var(--${props.types[0]}) 40%, var(--${props.types[1]}) 60%)`
       : `var(--${props.types[0]});`
   }};
-  /* background-color: white; */
   border: 1px solid #161616;
   border-radius: 8px;
   position: relative;
   height: 80vh;
   width: 70vw;
+  text-align: center;
 
   .close {
     margin: 5px;
@@ -31,7 +31,6 @@ export const ModalContainer = styled.div<{ types: string[] }>`
     border: 1px solid #161616;
     background: none;
     width: 15%;
-    /* height: 10px; */
     position: absolute;
     right: 0;
 
@@ -49,10 +48,8 @@ export const ModalContainer = styled.div<{ types: string[] }>`
   @media (max-width: 768px) {
     height: 80vh;
     width: 70vw;
-
     && img {
-      margin-top: 5%;
-      height: 70%;
+      height: 75%;
     }
   }
 
@@ -71,7 +68,7 @@ export const ModalContainer = styled.div<{ types: string[] }>`
     background-color: var(--p-background);
     color: var(--p-color);
     display: flex;
-    font-size: 20px;
+    font-size: 24px;
     height: 15%;
     justify-content: center;
     text-transform: capitalize;

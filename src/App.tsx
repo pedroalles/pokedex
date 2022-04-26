@@ -36,8 +36,21 @@ const App: React.FC<Props> = ({
       {isOpen && (
         <Modal pokemon={currPokemon} onClose={toggleModal} isOpen={isOpen} />
       )}
-      {pokemons.map((pokemon, index) => {
-        if (index + 1 === triggerPosition) {
+      <div className="board">
+        {pokemons.map((pokemon, index) => {
+          if (index + 1 === triggerPosition) {
+            return (
+              <Card
+                key={pokemon.details.id}
+                pokemon={pokemon}
+                onClick={() => {
+                  setCurrPokemon(pokemon)
+                  setIsOpen((prev) => !prev)
+                }}
+                loadTrigger={loadTrigger}
+              />
+            )
+          }
           return (
             <Card
               key={pokemon.details.id}
@@ -46,21 +59,10 @@ const App: React.FC<Props> = ({
                 setCurrPokemon(pokemon)
                 setIsOpen((prev) => !prev)
               }}
-              loadTrigger={loadTrigger}
             />
           )
-        }
-        return (
-          <Card
-            key={pokemon.details.id}
-            pokemon={pokemon}
-            onClick={() => {
-              setCurrPokemon(pokemon)
-              setIsOpen((prev) => !prev)
-            }}
-          />
-        )
-      })}
+        })}
+      </div>
     </div>
   )
 }
