@@ -14,7 +14,7 @@ const App: React.FC<Props> = ({
   loadPokemonList,
   loadPokemonDetails
 }: Props) => {
-  const [pokemons, lastCard] = usePokemons({
+  const [pokemons, loadTrigger] = usePokemons({
     loadPokemonList,
     loadPokemonDetails
   })
@@ -30,7 +30,7 @@ const App: React.FC<Props> = ({
               key={index + 1}
               pokemon={pokemon}
               index={index + 1}
-              loadTrigger={lastCard}
+              loadTrigger={loadTrigger}
             />
           )
         }

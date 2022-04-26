@@ -7,7 +7,7 @@ type hookParams = {
   loadPokemonList: LoadPokemonList
   loadPokemonDetails: LoadPokemonDetails
 }
-type hookResponse = [pokemons: IPokemon[], lastCard: (node: Element) => void]
+type hookResponse = [pokemons: IPokemon[], loadTrigger: (node: Element) => void]
 
 export const usePokemons = ({
   loadPokemonList,
