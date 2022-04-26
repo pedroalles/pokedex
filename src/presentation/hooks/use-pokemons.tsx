@@ -1,22 +1,31 @@
 import { LoadPokemonList } from '../../domain/usecases/load-pokemon-list'
+import { LoadPokemonDetails } from '../../domain/usecases/load-pokemon-details'
 import { IPokemon } from '../../domain/models/pokemon'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-export const usePokemons = (
+type hookParams = {
   loadPokemonList: LoadPokemonList
-): [pokemons: IPokemon[], lastCard: any] => {
+  loadPokemonDetails: LoadPokemonDetails
+}
+type hookResponse = [pokemons: IPokemon[], lastCard: (node: Element) => void]
+
+export const usePokemons = ({
+  loadPokemonList,
+  loadPokemonDetails
+}: hookParams): hookResponse => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([])
 
-  const limit = 21
   const [loading, setLoading] = useState(false)
+  const limit = 21
   const [currUrl, setCurrUrl] = useState(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
   )
   const [nextUrl, setNextUrl] = useState(null)
 
   const observer = useRef<IntersectionObserver>()
-  const lastCard = useCallback(
-    (node) => {
+
+  const loadTrigger = useCallback(
+    (node: Element) => {
       if (loading) return
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
@@ -31,12 +40,20 @@ export const usePokemons = (
 
   useEffect(() => {
     setLoading(true)
-    loadPokemonList.load(currUrl).then((res) => {
-      setPokemons((state) => [...state, ...res.pokemons])
+    loadPokemonList.load(currUrl).then(async (res) => {
+      const pokemonsWithDetails = await Promise.all(
+        res.pokemons.map(async (poke: IPokemon) => {
+          return loadPokemonDetails.load(poke.url).then((res) => ({
+            ...poke,
+            details: { ...res }
+          }))
+        })
+      )
+      setPokemons((prevState) => [...prevState, ...pokemonsWithDetails])
       setNextUrl(res.next)
       setLoading(false)
     })
-  }, [currUrl, loadPokemonList, setPokemons])
+  }, [currUrl, loadPokemonList, loadPokemonDetails, setPokemons])
 
-  return [pokemons, lastCard]
+  return [pokemons, loadTrigger]
 }

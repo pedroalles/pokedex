@@ -14,30 +14,27 @@ const App: React.FC<Props> = ({
   loadPokemonList,
   loadPokemonDetails
 }: Props) => {
-  const [pokemons, lastCard] = usePokemons(loadPokemonList)
+  const [pokemons, lastCard] = usePokemons({
+    loadPokemonList,
+    loadPokemonDetails
+  })
+
+  const triggerPosition = pokemons.length - 3
 
   return (
     <div className="App">
-      {pokemons.map((poke, index) => {
-        if (pokemons.length === index + 1) {
+      {pokemons.map((pokemon, index) => {
+        if (index + 1 === triggerPosition) {
           return (
             <Card
               key={index + 1}
-              loadPokemonDetails={loadPokemonDetails}
-              pokemon={poke}
-              lastCard={lastCard}
+              pokemon={pokemon}
               index={index + 1}
+              loadTrigger={lastCard}
             />
           )
         }
-        return (
-          <Card
-            key={index + 1}
-            loadPokemonDetails={loadPokemonDetails}
-            pokemon={poke}
-            index={index + 1}
-          />
-        )
+        return <Card key={index + 1} pokemon={pokemon} index={index + 1} />
       })}
     </div>
   )

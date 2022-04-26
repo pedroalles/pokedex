@@ -1,42 +1,26 @@
-import { CardContainer } from "./card.style";
-import { LoadPokemonDetails } from "../../../domain/usecases/load-pokemon-details";
-import "./card.style.css";
-import { IPokemon, IPokemonDetails } from "../../../domain/models/pokemon";
-import { useEffect, useState } from "react";
+import { CardContainer } from './card.style'
+import './card.style.css'
+import { IPokemon } from '../../../domain/models/pokemon'
 
 type Props = {
-  pokemon: IPokemon;
-  loadPokemonDetails: LoadPokemonDetails;
-  lastCard?: any;
-  index: number;
-};
+  pokemon: IPokemon
+  index: number
+  loadTrigger?: any
+}
 
-const Card: React.FC<Props> = ({
-  loadPokemonDetails,
-  pokemon,
-  lastCard,
-  index
-}: Props) => {
-  const [pokeDetails, setPokeDetails] = useState<IPokemonDetails>(null);
-
-  useEffect(() => {
-    loadPokemonDetails.load(pokemon.url).then(setPokeDetails);
-  }, [loadPokemonDetails, pokemon.url]);
-
+const Card: React.FC<Props> = ({ pokemon, loadTrigger, index }: Props) => {
   return (
-    pokeDetails && (
-      <CardContainer ref={lastCard} types={pokeDetails.types}>
-        <p className="tag">{index.toString().padStart(3, "0")}</p>
-        <img
-          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${index
-            .toString()
-            .padStart(3, "0")}.png`}
-          alt=""
-        />
-        <p className="name">{pokemon.name}</p>
-      </CardContainer>
-    )
-  );
-};
+    <CardContainer ref={loadTrigger} types={pokemon.details.types}>
+      <p className="tag">{index.toString().padStart(3, '0')}</p>
+      <img
+        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${index
+          .toString()
+          .padStart(3, '0')}.png`}
+        alt=""
+      />
+      <p className="name">{pokemon.name}</p>
+    </CardContainer>
+  )
+}
 
-export default Card;
+export default Card
