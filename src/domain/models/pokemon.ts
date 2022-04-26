@@ -5,5 +5,6 @@ export interface IPokemon {
 }
 
 export interface IPokemonDetails {
+  id: string
   types: string[]
 }

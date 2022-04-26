@@ -3,16 +3,20 @@ import { IPokemon } from '../../../domain/models/pokemon'
 
 type Props = {
   pokemon: IPokemon
-  index: number
-  loadTrigger?: any
+  loadTrigger?: (node: Element) => void
+  onClick: () => void
 }
 
-const Card: React.FC<Props> = ({ pokemon, loadTrigger, index }: Props) => {
+const Card: React.FC<Props> = ({ pokemon, loadTrigger, onClick }: Props) => {
   return (
-    <CardContainer ref={loadTrigger} types={pokemon.details.types}>
-      <p className="index">{index.toString().padStart(3, '0')}</p>
+    <CardContainer
+      ref={loadTrigger}
+      onClick={onClick}
+      types={pokemon.details.types}
+    >
+      <p className="index">{pokemon.details.id.toString().padStart(3, '0')}</p>
       <img
-        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${index
+        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.details.id
           .toString()
           .padStart(3, '0')}.png`}
         alt=""

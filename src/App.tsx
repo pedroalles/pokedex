@@ -3,7 +3,9 @@ import { LoadPokemonList } from './domain/usecases/load-pokemon-list'
 import { LoadPokemonDetails } from './domain/usecases/load-pokemon-details'
 import Card from './presentation/components/card/card'
 import { usePokemons } from './presentation/hooks/use-pokemons'
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from './presentation/components/modal/modal'
+import { IPokemon } from './domain/models/pokemon'
 
 type Props = {
   loadPokemonList: LoadPokemonList
@@ -19,22 +21,45 @@ const App: React.FC<Props> = ({
     loadPokemonDetails
   })
 
+  const [currPokemon, setCurrPokemon] = useState<IPokemon>(null)
+
   const triggerPosition = pokemons.length - 3
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleModal = () => {
+    setIsOpen((prev) => !prev)
+  }
 
   return (
     <div className="App">
+      {isOpen && (
+        <Modal pokemon={currPokemon} onClose={toggleModal} isOpen={isOpen} />
+      )}
       {pokemons.map((pokemon, index) => {
         if (index + 1 === triggerPosition) {
           return (
             <Card
-              key={index + 1}
+              key={pokemon.details.id}
               pokemon={pokemon}
-              index={index + 1}
+              onClick={() => {
+                setCurrPokemon(pokemon)
+                setIsOpen((prev) => !prev)
+              }}
               loadTrigger={loadTrigger}
             />
           )
         }
-        return <Card key={index + 1} pokemon={pokemon} index={index + 1} />
+        return (
+          <Card
+            key={pokemon.details.id}
+            pokemon={pokemon}
+            onClick={() => {
+              setCurrPokemon(pokemon)
+              setIsOpen((prev) => !prev)
+            }}
+          />
+        )
       })}
     </div>
   )

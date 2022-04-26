@@ -29,7 +29,7 @@
   grid-auto-rows: 210px;
   grid-gap: 4px;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 4px;
+  /* padding: 4px; */
   text-align: center;
 }
 

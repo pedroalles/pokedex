@@ -24,7 +24,7 @@ export const CardContainer = styled.div<{ types: string[] }>`
     border-bottom-right-radius: 8px;
     color: var(--p-color);
     font-size: 16px;
-    padding: 4px 4px;
+    padding: 4px 8px;
     position: absolute;
   }
 

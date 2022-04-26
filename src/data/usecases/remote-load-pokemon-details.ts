@@ -3,6 +3,7 @@ import { IPokemonDetails } from '../../domain/models/pokemon'
 import { LoadPokemonDetails } from '../../domain/usecases/load-pokemon-details'
 
 interface Details {
+  id: string
   types: { type: { name: string } }[]
 }
 
@@ -23,6 +24,7 @@ export class RemoteLoadPokemonDetails implements LoadPokemonDetails {
     switch (httpResponse.statusCode) {
       case HttpStatusCode.Ok:
         return {
+          id: remotePokeDetails.id,
           types: remotePokeDetails.types.map((el) => el.type.name)
         }
       default:
